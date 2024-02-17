@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site1Controller;
 use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\Site3Controller;
+use App\Http\Controllers\FormsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,3 +36,18 @@ Route::prefix('site3')->name('site3.')->group(function() {
     Route::get('/post',[Site3Controller::class, 'post'])
     ->name('post');
 });
+
+Route::get('form1',[FormsController::class, 'form1'])
+->name('forms.form1');
+Route::post('form1',[FormsController::class, 'form1_data'])
+->name('forms.form1_data');
+
+Route::get('form2',[FormsController::class, 'form2'])
+->name('forms.form2');
+Route::post('form2',[FormsController::class, 'form2_data'])
+->name('forms.form2_data');
+
+Route::get('form3',[FormsController::class, 'form3'])
+->name('forms.form3');
+Route::post('form3',[FormsController::class, 'form3_data'])
+->name('forms.form3_data');
