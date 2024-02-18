@@ -51,3 +51,13 @@ Route::get('form3',[FormsController::class, 'form3'])
 ->name('forms.form3');
 Route::post('form3',[FormsController::class, 'form3_data'])
 ->name('forms.form3_data');
+
+Route::get('form4',[FormsController::class, 'form4'])
+->name('forms.form4');
+Route::post('form4',[FormsController::class, 'form4_data'])
+->name('forms.form4_data');
+
+Route::get('contact',[FormsController::class, 'contact'])
+->name('forms.contact');
+Route::post('contact',[FormsController::class, 'contact_data'])
+->name('forms.contact_data');
