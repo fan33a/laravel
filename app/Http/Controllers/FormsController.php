@@ -97,10 +97,10 @@ class FormsController extends Controller
         return view('forms.contact');
     }
 
-    function contact_data(Request $requset) {
-        // dd($requset->all());
+    function contact_data(Request $request) {
+        // dd($request->all());
 
-        $requset->validate([
+        $request->validate([
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
@@ -108,9 +108,9 @@ class FormsController extends Controller
             'message' => 'required'
         ]);
 
-        $data = $requset->except('_token');
+        $data = $request->except('_token');
 
-        $data['image'] = $requset->file('image')->store('uploads', 'custem');
+        $data['image'] = $request->file('image')->store('uploads', 'custom');
 
         Mail::to('fan33a@gmail.com')->send(new ContactMail()); // Pass the data to mail class
 

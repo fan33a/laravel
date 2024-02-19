@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\FormsController;
 use App\Http\Controllers\Site1Controller;
 use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\Site3Controller;
-use App\Http\Controllers\FormsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,7 +58,17 @@ Route::get('form4',[FormsController::class, 'form4'])
 Route::post('form4',[FormsController::class, 'form4_data'])
 ->name('forms.form4_data');
 
-Route::get('contact',[FormsController::class, 'contact'])
+Route::get('contact',[FormsController::class , 'contact'])
 ->name('forms.contact');
-Route::post('contact',[FormsController::class, 'contact_data'])
+Route::post('contact',[FormsController::class , 'contact_data'])
 ->name('forms.contact_data');
+
+
+// CRUD Application
+Route::get('posts',[PostController::class , 'index'])
+->name('posts.index');
+
+Route::get('posts/create',[PostController::class , 'create'])
+->name('posts.create');
+Route::post('posts/store',[PostController::class , 'store'])
+->name('posts.store');
