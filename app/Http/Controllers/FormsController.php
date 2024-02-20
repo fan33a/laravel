@@ -112,7 +112,7 @@ class FormsController extends Controller
 
         $data['image'] = $request->file('image')->store('uploads', 'custom');
 
-        Mail::to('fan33a@gmail.com')->send(new ContactMail()); // Pass the data to mail class
+        Mail::to('fan33a@gmail.com')->send(new ContactMail($data)); // Pass the data to mail class
 
         
     }

@@ -43,5 +43,6 @@
             <button type="submit" class="btn btn-primary">Add</button>
         </form>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js"></script>
 </body>
 </html>

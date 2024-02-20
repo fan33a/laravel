@@ -17,6 +17,7 @@
     <p><b>Phone: </b>{{ $data['phone'] }}</p>
     <p><b>Subject: </b>{{ $data['subject'] }}</p>
     <p><b>Message: </b>{{ $data['message'] }}</p>
+    <img src="{{ asset($data['image']) }}" alt="">
     
     <br>
     <br>
