@@ -65,10 +65,38 @@ Route::post('contact',[FormsController::class , 'contact_data'])
 
 
 // CRUD Application
+/**
+ * Methods
+ * - GET uesed translating between the pages
+ * - POST uesed send data from a form
+ * - DELETE uesed for delete data
+ * - PUT uesed for update data 
+ * - PATCH old method using like PUT
+ */
+
 Route::get('posts',[PostController::class , 'index'])
 ->name('posts.index');
 
+// Store Routes
 Route::get('posts/create',[PostController::class , 'create'])
 ->name('posts.create');
 Route::post('posts/store',[PostController::class , 'store'])
 ->name('posts.store');
+
+// Delete Routes
+Route::delete('post/{id}', [PostController::class , 'destroy'])
+->name('posts.destroy');
+ 
+// SoftDelete Routes
+Route::get('posts/trash',[PostController::class , 'trash'])
+->name('posts.trash');
+Route::get('posts/{id}/restore',[PostController::class , 'restore'])
+->name('posts.restore');
+Route::get('posts/{id}/forcedelete',[PostController::class , 'forcedelete'])
+->name('posts.forcedelete');
+
+// Edit Routes
+Route::get('posts/{id}/edit' , [PostController::class, 'edit'])
+->name('posts.edit');
+Route::put('posts/{id}/update' , [PostController::class, 'update'])
+->name('posts.update');

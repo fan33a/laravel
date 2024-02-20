@@ -75,4 +75,57 @@ class PostController extends Controller
         /* With method uesed to send prams to another page ->with('prameter name' , 'value') */
          return redirect()->route('posts.index')->with('message', 'Post Added Successfully!')->with('type','success');
     }
+
+
+    function destroy($id) {
+
+        Post::destroy($id);
+        
+        return redirect()->route('posts.index')->with('message', 'Post Deleted Successfully!')->with('type','danger');
+    }
+
+    function trash() {
+
+        $posts = Post::onlyTrashed()->latest('id')->paginate(10);
+
+        return view('posts.trash',compact('posts'));
+    }
+
+    function restore($id) {
+        Post::onlyTrashed()->find($id)->restore(); // ->restore = edit softdelte column and give him null value
+
+        return redirect()->route('posts.index')->with('message', 'Post Restored Successfully!')->with('type','success');
+    }
+
+    function forcedelete($id) {
+        Post::onlyTrashed()->find($id)->forcedelete(); // ->restore = edit softdelte column and give him null value
+
+        return redirect()->route('posts.index')->with('message', 'Post Deleted Permainently Successfully!')->with('type','success');
+    }
+
+    function edit($id) {
+        $post = Post::findOrFail($id);
+
+        return view('posts.edit', compact('post'));
+    }
+
+    function update(PostRequest $request, $id) {
+        $post = Post::findOrFail($id);
+
+        // the old image
+        $image_path = $post->image;
+
+         // If he upladed a new image
+        if($request->hasFile('image')){
+            $image_path = $request->file('image')->store('uploads/posts', 'custom');
+        }
+
+        $post->update([
+            'title' => $request->title,
+            'image' => $image_path ,
+            'content' => $request->content
+        ]);
+
+        return redirect()->route('posts.index')->with('message', 'Post Updated Successfully!')->with('type','success');
+    }
 }

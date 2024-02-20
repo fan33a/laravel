@@ -21,9 +21,17 @@ class PostRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        // $this->method return the form method
+        
+        $rule = 'required|extensions:png,jpg,jpeg,svg';
+        if($this->method() == 'PUT') {
+            $rule = 'nullable|extensions:png,jpg,jpeg,svg';
+        }
+
         return [
             'title' => 'required',
-            'image' => 'required|extensions:png,jpg,jpeg,svg',
+            'image' => $rule,
             'content' => 'required',
         ];
     }
