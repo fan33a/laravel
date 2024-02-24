@@ -6,6 +6,7 @@ use App\Http\Controllers\FormsController;
 use App\Http\Controllers\Site1Controller;
 use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\Site3Controller;
+use App\Http\Controllers\RelationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -100,3 +101,9 @@ Route::get('posts/{id}/edit' , [PostController::class, 'edit'])
 ->name('posts.edit');
 Route::put('posts/{id}/update' , [PostController::class, 'update'])
 ->name('posts.update');
+
+// Relation Routes
+
+Route::get('one-to-one', [RelationController::class , 'one_to_one']);
+
+Route::get('users', [RelationController::class , 'users']);

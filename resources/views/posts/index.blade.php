@@ -29,11 +29,13 @@
                 <th>Title</th>
                 <th>Content</th>
                 <th>Image</th>
+                <th>Created At</th>
+                <th>Updated At</th>
                 <th>Actions</th>
             </tr>
             @if ($posts->count() <= 0)
                 <tr>
-                    <td colspan="5">No Data Found</td>
+                    <td colspan="7">No Data Found</td>
                 </tr>
             @endif
             @foreach ($posts as $post)
@@ -42,8 +44,9 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->content }}</td>
                     <td><img src="{{ $post->image }}" alt=""></td>
+                    <td>{{ $post->created_at->format('d M Y') }}</td>
+                    <td>{{ $post->updated_at->diffForHumans()}}</td>
                     <td class="">
-
                         <form action="{{ route('posts.destroy',$post->id) }}" method="post">
                         @csrf
                         @method('delete')
