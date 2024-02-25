@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+
 class Post extends Model
 {
     use HasFactory , SoftDeletes;
@@ -24,4 +25,13 @@ class Post extends Model
 
     // $//fillable mean: the fields allowed to go in database mean: the fields dose not allowed to go int database
     protected $guarded = [];
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

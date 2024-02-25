@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create New Post</title>
+    <title>Users</title>
     <link rel="stylesheet" href="{{ asset('bs/css/bootstrap.min.css') }}">
     <script src="{{ asset('bs/js/bootstrap.min.js') }}"></script>
 </head>

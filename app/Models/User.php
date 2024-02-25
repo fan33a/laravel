@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Comment;
 use App\Models\Insurance;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -47,5 +48,10 @@ class User extends Authenticatable
     // Method to make relation with Insurance Model
     public function insurance() { // u can use any name for the method
         return $this->hasOne(Insurance::class , 'user_id')->withDefault(); // hasOne(the model , foregin key name); / withDefault() return null if the fild is null
+    }
+
+    public function comment() {
+        return $this->hasMany(Comment::class)->withDefault(); 
+
     }
 }

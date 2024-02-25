@@ -104,6 +104,23 @@ Route::put('posts/{id}/update' , [PostController::class, 'update'])
 
 // Relation Routes
 
-Route::get('one-to-one', [RelationController::class , 'one_to_one']);
+/**
+ * Laravel Relations
+ * 1. One To One
+ * - hasOne => forword ->withDefault()
+ * - belongsTo => reverse ->withDefault()
+ * 2. One To Many
+ * - hasMany => forword
+ * - belongsTo => reverse ->withDefault()
+ * 3. Many To Many
+ * - belonstToMany => forword
+ * - belonstToMany => reverse
+ */
 
+Route::get('one-to-one', [RelationController::class , 'one_to_one']);
 Route::get('users', [RelationController::class , 'users']);
+
+Route::get('one-to-many', [RelationController::class , 'one_to_many']);
+Route::get('post/{id}', [RelationController::class, 'post']);
+
+Route::post('add-comment', [RelationController::class, 'add_comment'])->name('post.add_comment');
