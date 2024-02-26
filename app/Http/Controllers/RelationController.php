@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Student;
+use App\Models\Subject;
 use App\Models\Insurance;
 use Illuminate\Http\Request;
 
@@ -58,6 +60,28 @@ class RelationController extends Controller
             'post_id' => $request->post_id,
         ]); 
         
+        return redirect()->back();
+    }
+
+    function register_subjects() {
+        $std = Student::findOrFail(2);
+        // dd($std->all());
+        $subjects = Subject::all();
+        return view('relation.register_subjects', compact('std', 'subjects'));
+    }
+
+    function register_subjects_data(Request $request) {
+
+        // dd($request->all());
+        $std = Student::findOrFail(2);
+
+        // $std->subjects; // get all student subjects
+        // $std->subjects(); // execute method on this relation
+
+        // $std->subjects()->attach($request->subjects); // add new record to the relation "add without search if exsits"
+        // $std->subjects()->detach($request->subjects); // delete record
+
+        $std->subjects()->sync( $request->subjects); // The best method for add record or delele
         return redirect()->back();
     }
 }

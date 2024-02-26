@@ -117,10 +117,17 @@ Route::put('posts/{id}/update' , [PostController::class, 'update'])
  * - belonstToMany => reverse
  */
 
+//  One To One
 Route::get('one-to-one', [RelationController::class , 'one_to_one']);
 Route::get('users', [RelationController::class , 'users']);
 
+//  One To many
 Route::get('one-to-many', [RelationController::class , 'one_to_many']);
 Route::get('post/{id}', [RelationController::class, 'post']);
 
 Route::post('add-comment', [RelationController::class, 'add_comment'])->name('post.add_comment');
+
+// Many To Many
+Route::get('register-subjects', [RelationController::class, 'register_subjects']);
+Route::post('register-subjects', [RelationController::class, 'register_subjects_data'])
+->name('register_subjects_data');
